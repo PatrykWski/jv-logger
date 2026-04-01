@@ -17,7 +17,7 @@ public class Main {
         try {
             user = authenticationService.login("bob", "1234");
         } catch (AuthenticationException e) {
-            logger.error("Method login was called, Params login={}", "bob", e);
+            logger.error("Authentication service failed. Params login={}", "bob", e);
             return;
         }
         OrderService orderService = new OrderServiceImpl();
