@@ -17,8 +17,8 @@ public class Main {
         try {
             user = authenticationService.login("bob", "1234");
         } catch (AuthenticationException e) {
+            e.printStackTrace();
             logger.error("Authentication service failed. Params login={}", "bob", e);
-            throw new AuthenticationException("Username or password are incorrect");
         }
         OrderService orderService = new OrderServiceImpl();
         orderService.completeOrder(user.getUserId());
