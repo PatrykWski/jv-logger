@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws AuthenticationException {
         final Logger logger = LogManager.getLogger(Main.class);
         AuthenticationService authenticationService = new AuthenticationServiceImpl();
-        User user;
+        User user = null;
         try {
             user = authenticationService.login("bob", "1234");
         } catch (AuthenticationException e) {
@@ -21,6 +21,7 @@ public class Main {
             logger.error("Authentication service failed. Params login={}", "bob", e);
         }
         OrderService orderService = new OrderServiceImpl();
+        assert user != null;
         orderService.completeOrder(user.getUserId());
     }
 }
